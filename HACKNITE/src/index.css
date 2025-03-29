@@ -4,6 +4,8 @@ body {
   background-color: #f5f5f5;
 }
 
+
+
 .container {
   width: 100%;
   text-align: center;
@@ -590,87 +592,111 @@ body {
   margin-bottom: 10px;
 }
 
-.soil-info-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 30px;
-  background: linear-gradient(135deg, #e8f5e9, #c8e6c9); /* Light green gradient */
-  border-radius: 15px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 1s ease-in-out;
+.soil-info-container {
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh; /* Ensures it fits within viewport */
+  overflow-y: auto; /* Enables scrolling if needed */
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.soil-info-form h2 {
+.soil-info-container h2 {
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 2rem;
-  color: #2e7d32; /* Dark green */
-  font-weight: bold;
+  margin-bottom: 15px;
 }
 
-.form-group {
-  margin-bottom: 20px;
-  position: relative;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #1b5e20; /* Darker green */
-  font-size: 1rem;
-}
-
-.form-group input,
-.form-group select {
+.soil-info-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
-  padding: 10px 15px;
-  font-size: 1rem;
+}
+
+.soil-info-container label {
+  font-weight: bold;
+}
+
+.soil-info-container input,
+.soil-info-container select {
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.form-group input:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: #2e7d32; /* Highlight border on focus */
-  box-shadow: 0 0 10px rgba(46, 125, 50, 0.5); /* Green glow */
-}
-
-button {
   width: 100%;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #2e7d32, #66bb6a); /* Green gradient */
+  font-size: 16px;
+}
+
+.soil-info-container button {
+  background-color: #2e7d32;
   color: white;
+  padding: 12px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.soil-info-container button:hover {
+  background-color: #1b5e20;
+}
+
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 button:hover {
-  background: linear-gradient(135deg, #1b5e20, #43a047); /* Darker green gradient */
-  transform: translateY(-2px); /* Slight lift on hover */
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  background-color: #1b5e20;
 }
 
-button:active {
-  transform: translateY(2px); /* Pressed effect */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+.sidebar {
+  width: 250px;
+  background: #fff;
+  padding: 20px;
+  height: 100vh;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.sidebar li:hover {
+  background: #e0e0e0;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
 }

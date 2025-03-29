@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, Marker, Autocomplete } from "@react-google-maps/api";
 
 const containerStyle = {
-  width: "100%",
-  height: "400px",
+  width: "100%",       // Takes full width of parent container
+  height: "70vh",      // 70% of viewport height (or use "600px" for fixed size)
   borderRadius: "20px",
   overflow: "hidden",
+  minHeight: "500px",
 };
 
 const defaultCenter = {
@@ -84,7 +85,7 @@ const MapComponent = () => {
   }, []);
 
   return (
-    <div className="map-component">
+    <div className="map-component" style={{ width: "50%", height: "100%" }}>
       <h2 className="map-title">Select a Location</h2>
       <LoadScript googleMapsApiKey="AIzaSyBubRR9n_FiPPnknhMZlxyHNm6s_7nzo2s" libraries={["places"]}>
         <Autocomplete

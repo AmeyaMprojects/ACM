@@ -63,6 +63,7 @@ body {
   background-repeat: no-repeat; /* Prevents the image from repeating */
   color: white; /* Ensures text is visible on the background */
   text-align: center; /* Centers the text */
+  text-shadow: 1px 1px black;
   padding: 50px 20px; /* Adds spacing inside the section */
   height: 100vh; /* Makes the section take up the full viewport height */
   display: flex; /* Enables flexbox for centering content */
@@ -547,6 +548,10 @@ body {
   width: 100%;
 }
 
+.login-page h1 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust values as needed */
+}
+
 .login-form {
   background: white;
   padding: 30px;
@@ -563,6 +568,7 @@ body {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  
 }
 
 .login-form input {

@@ -8,27 +8,31 @@ const cropsData = [
 ];
 
 function Crops({ onSubmit }) {
-  const [acres, setAcres] = useState({
-    Apple: 0,
-    Potato: 0,
-    Maize: 0,
-    Strawberry: 0,
+  const [cropSelection, setCropSelection] = useState({
+    Apple: "no",
+    Potato: "no",
+    Maize: "no",
+    Strawberry: "no",
   });
 
-  const handleInputChange = (crop, value) => {
-    setAcres((prevAcres) => ({
-      ...prevAcres,
-      [crop]: value,
+  const handleSelectionChange = (crop, value) => {
+    setCropSelection(prev => ({
+      ...prev,
+      [crop]: value
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Crops Data Submitted:", acres);
+    const selectedCrops = Object.entries(cropSelection)
+      .filter(([_, value]) => value === "yes")
+      .map(([crop]) => crop);
+    
+    console.log("Selected Crops:", selectedCrops);
     if (onSubmit) {
-      onSubmit(acres); // Pass the data to the parent component
+      onSubmit(selectedCrops);
     }
-    alert("Crops data submitted successfully!");
+    alert("Crops selection submitted successfully!");
   };
 
   return (
@@ -39,15 +43,17 @@ function Crops({ onSubmit }) {
           <div key={crop.name} className="crop-card">
             <img src={crop.image} alt={crop.name} className="crop-image" />
             <h3>{crop.name}</h3>
-            <label htmlFor={`${crop.name}-acres`}>Acres:</label>
-            <input
-              type="number"
-              id={`${crop.name}-acres`}
-              value={acres[crop.name]}
-              onChange={(e) => handleInputChange(crop.name, e.target.value)}
-              min="0"
-              placeholder="Enter acres"
-            />
+            
+            <label htmlFor={`${crop.name}-select`}>Do you grow this crop?</label>
+            <select
+              id={`${crop.name}-select`}
+              value={cropSelection[crop.name]}
+              onChange={(e) => handleSelectionChange(crop.name, e.target.value)}
+              className="crop-select"
+            >
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
           </div>
         ))}
       </div>

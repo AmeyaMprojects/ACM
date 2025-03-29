@@ -6,7 +6,7 @@ import { exec } from "child_process"; // To execute Python scripts
 const app = express();
 const PORT = 5000;
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/reverse?format=json";
-const WEATHER_API_KEY = "a002f5b7e08fef73ab9f5efca4598b54"; // Replace with your OpenWeatherMap API key
+const WEATHER_API_KEY = "YOUR_WEATHER_API_KEY"; // Replace with your OpenWeatherMap API key
 const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather";
 
 // Middleware

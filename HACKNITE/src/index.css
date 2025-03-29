@@ -601,57 +601,89 @@ body {
 }
 
 .soil-info-container {
-  max-width: 500px;
-  width: 90%;
-  max-height: 80vh; /* Ensures it fits within viewport */
-  overflow-y: auto; /* Enables scrolling if needed */
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9); /* Light green gradient */
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .soil-info-container h2 {
-  text-align: center;
-  margin-bottom: 15px;
+  font-size: 2rem;
+  color: #2e7d32; /* Dark green */
+  margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .soil-info-container form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 100%;
+  align-items: center;
 }
 
 .soil-info-container label {
+  font-size: 1rem;
   font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+  text-align: left;
+  width: 100%;
 }
 
-.soil-info-container input,
-.soil-info-container select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.soil-info-container select,
+.soil-info-container input {
   width: 100%;
-  font-size: 16px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.soil-info-container select:focus,
+.soil-info-container input:focus {
+  outline: none;
+  border-color: #2e7d32; /* Green border on focus */
+  box-shadow: 0 0 8px rgba(46, 125, 50, 0.5); /* Green glow */
 }
 
 .soil-info-container button {
-  background-color: #2e7d32;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #2e7d32, #66bb6a); /* Green gradient */
   color: white;
-  padding: 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: bold;
   cursor: pointer;
-  font-size: 16px;
-  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scrollable-container {
+  max-height: 80vh; /* Limit the height to 80% of the viewport */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  padding: 20px; /* Add padding for better spacing */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 10px; /* Rounded corners */
+  background: #ffffff; /* White background for better readability */
 }
 
 .soil-info-container button:hover {
-  background-color: #1b5e20;
+  background: linear-gradient(135deg, #1b5e20, #43a047); /* Darker green gradient */
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.soil-info-container button:active {
+  transform: translateY(2px); /* Pressed effect */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 

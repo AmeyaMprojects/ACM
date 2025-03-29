@@ -34,6 +34,7 @@ function SoilInfo({ onSubmit }) {
   };
 
   return (
+    < div className="scrollable-container">
     <div className="soil-info-container" style={{ maxWidth: "500px", margin: "0 auto", padding: "24px" }}>
       <h2 style={{ textAlign: "center", marginBottom: "24px", color: "#2c3e50" }}>Enter Soil Information</h2>
       <form onSubmit={handleSubmit}>
@@ -144,6 +145,7 @@ function SoilInfo({ onSubmit }) {
           Submit Soil Data
         </button>
       </form>
+    </div>
     </div>
   );
 }

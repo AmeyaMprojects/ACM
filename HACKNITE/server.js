@@ -4,6 +4,12 @@ import multer from "multer";
 import { exec } from "child_process";
 import axios from "axios";
 import fs from "fs";
+import { fileURLToPath } from "url";
+import path from "path";
+
+// Emulate __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 5000;
@@ -96,7 +102,7 @@ app.get("/api/predict-rainfall", async (req, res) => {
     console.log(`Preparing to call Python script with inputs: state=${state}, year=${year}, month=${month}`);
 
     // Execute the Python script for rainfall prediction
-    const pythonScriptPath = path.resolve("ACM", "HACKNITE", "C:\\Users\\rushi\\Documents\\GitHub\\New folder\\ACM\\HACKNITE\\predict_image.py");
+    const pythonScriptPath = path.join(__dirname, "predict_image.py");
     const inputData = JSON.stringify({ state, year, month }); // Input data for the Python script
 
     exec(`python ${pythonScriptPath} '${inputData}'`, (error, stdout, stderr) => {
@@ -153,41 +159,37 @@ app.get("/api/weather", async (req, res) => {
   }
 });
 
-// Function to run the TensorFlow model prediction (Python script)
-import path from "path";
 
 const runPrediction = (filePath) => {
   return new Promise((resolve, reject) => {
-    // Use the absolute path to the Python script
-    const pythonScriptPath = path.resolve("ACM", "HACKNITE", "C:\\Users\\rushi\\Documents\\GitHub\\New folder\\ACM\\HACKNITE\\predict_image.py");
-    console.log("Python script path:", pythonScriptPath);
+      const pythonScriptPath = path.join(__dirname, "predict_image.py");
+      console.log("Executing Python script:", pythonScriptPath);
 
-    // Normalize the uploaded file path
-    const normalizedFilePath = path.resolve(filePath);
-    console.log("Normalized file path:", normalizedFilePath);
+      exec(`python "${pythonScriptPath}" "${filePath}"`, (error, stdout, stderr) => {
+          if (error) {
+              console.error("Execution error:", error);
+              return reject("Failed to execute the prediction model.");
+          }
 
-    // Execute the Python script
-    exec(`python "${pythonScriptPath}" '${normalizedFilePath}'`, (error, stdout, stderr) => {
-      if (error) {
-        console.error("Error executing Python script:", error);
-        return reject("Failed to execute the prediction model.");
-      }
+          if (stderr) {
+              console.error("Python script stderr:", stderr);
+          }
 
-      if (stderr) {
-        console.error("Python script stderr:", stderr);
-        return reject("Error in Python script execution.");
-      }
-
-      try {
-        const result = JSON.parse(stdout); // Parse the output from the Python script
-        resolve(result);
-      } catch (parseError) {
-        console.error("Error parsing Python script output:", parseError);
-        reject("Invalid response from the prediction model.");
-      }
-    });
+          try {
+              // Extract only the last valid JSON from the output
+              const jsonLines = stdout.trim().split("\n");
+              const lastJsonLine = jsonLines[jsonLines.length - 1];
+              const result = JSON.parse(lastJsonLine);
+              resolve(result);
+          } catch (parseError) {
+              console.error("Error parsing Python output:", parseError, stdout);
+              reject("Invalid response from the prediction model.");
+          }
+      });
   });
 };
+
+
 
 // Endpoint to handle image upload and prediction
 app.post("/api/predict-image", upload.single("image"), async (req, res) => {

@@ -787,22 +787,23 @@ button:hover {
 .submit-button {
   margin-top: 20px;
   padding: 15px 30px;
-  background: linear-gradient(135deg, #2e7d32, #66bb6a); /* Green gradient */
-  color: white;
-  border: none;
+  background: #2e7d32; /* Solid green background */
+  color: white; /* White text */
+  border: none; /* Remove any border */
+  outline: none; /* Remove focus outline */
   border-radius: 5px;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .submit-button:hover {
+  background-color: #1b5e20; /* Darker green on hover */
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .submit-button:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
 }

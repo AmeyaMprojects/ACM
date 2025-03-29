@@ -502,3 +502,32 @@ body {
   align-items: center;
 }
 
+.map-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.map-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #2e7d32; /* Dark green */
+}
+
+.map-search-bar {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.map-search-bar:focus {
+  outline: none;
+  border-color: #2e7d32; /* Highlight border on focus */
+  box-shadow: 0 0 5px rgba(46, 125, 50, 0.5); /* Green shadow */
+}

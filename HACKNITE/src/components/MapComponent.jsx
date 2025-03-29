@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker, Autocomplete } from "@react-google-maps/api";
 
 const containerStyle = {
   width: "100%",
@@ -14,6 +14,7 @@ const defaultCenter = {
 const MapComponent = () => {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [serverCoordinates, setServerCoordinates] = useState(null);
+  const [autocomplete, setAutocomplete] = useState(null);
 
   // Handle map click
   const handleMapClick = (event) => {
@@ -23,6 +24,21 @@ const MapComponent = () => {
     };
     setSelectedLocation(clickedLocation);
     sendCoordinatesToBackend(clickedLocation);
+  };
+
+  // Handle place selection from the search bar
+  const handlePlaceSelect = () => {
+    if (autocomplete) {
+      const place = autocomplete.getPlace();
+      if (place.geometry) {
+        const location = {
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng(),
+        };
+        setSelectedLocation(location);
+        sendCoordinatesToBackend(location);
+      }
+    }
   };
 
   // Send coordinates to the backend
@@ -66,9 +82,19 @@ const MapComponent = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center p-4">
-      <h2 className="text-lg font-bold mb-2">Select a Location</h2>
-      <LoadScript googleMapsApiKey="AIzaSyBubRR9n_FiPPnknhMZlxyHNm6s_7nzo2s">
+    <div className="map-component">
+      <h2 className="map-title">Select a Location</h2>
+      <LoadScript googleMapsApiKey="AIzaSyBubRR9n_FiPPnknhMZlxyHNm6s_7nzo2s" libraries={["places"]}>
+        <Autocomplete
+          onLoad={(autocompleteInstance) => setAutocomplete(autocompleteInstance)}
+          onPlaceChanged={handlePlaceSelect}
+        >
+          <input
+            type="text"
+            placeholder="Search for a location"
+            className="map-search-bar"
+          />
+        </Autocomplete>
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={serverCoordinates || defaultCenter}
@@ -86,16 +112,6 @@ const MapComponent = () => {
           )}
         </GoogleMap>
       </LoadScript>
-      <div className="mt-4 text-center">
-        <h3 className="font-semibold">Server Coordinates:</h3>
-        {serverCoordinates ? (
-          <p>
-            Latitude: {serverCoordinates.lat}, Longitude: {serverCoordinates.lng}
-          </p>
-        ) : (
-          <p>Loading coordinates from server...</p>
-        )}
-      </div>
     </div>
   );
 };

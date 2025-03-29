@@ -20,6 +20,29 @@ export default function MapComponent() {
       lng: event.latLng.lng(),
     };
     setSelectedLocation(clickedLocation);
+
+    // Send the coordinates to the backend
+    sendCoordinatesToBackend(clickedLocation);
+  };
+
+  const sendCoordinatesToBackend = async (location) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/coordinates", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(location),
+      });
+
+      if (response.ok) {
+        console.log("Coordinates sent successfully:", location);
+      } else {
+        console.error("Failed to send coordinates:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error sending coordinates:", error);
+    }
   };
 
   return (

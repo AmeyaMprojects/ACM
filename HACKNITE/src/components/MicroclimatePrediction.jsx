@@ -30,7 +30,7 @@ const MicroclimatePrediction = () => {
       {weatherData ? (
         <div className="charts">
           <p>
-            <strong>Temperature:</strong> {weatherData.temperature}°C
+            <strong>Temperatures:</strong> {weatherData.temperature}°C
           </p>
           <p>
             <strong>Humidity:</strong> {weatherData.humidity}%

@@ -1,10 +1,14 @@
 import express from "express";
 import cors from "cors";
-import axios from "axios"; // For reverse geocoding and weather API
-import { exec } from "child_process"; // To execute Python scripts
+import multer from "multer";
+import { exec } from "child_process";
+import axios from "axios";
+import fs from "fs";
 
 const app = express();
 const PORT = 5000;
+
+// Constants for APIs
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/reverse?format=json";
 const WEATHER_API_KEY = "a002f5b7e08fef73ab9f5efca4598b54"; // Replace with your OpenWeatherMap API key
 const WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather";
@@ -16,7 +20,10 @@ app.use(express.json());
 // In-memory storage for coordinates
 let coordinates = { lat: 20.5937, lng: 78.9629 }; // Default coordinates (India)
 
-// Function to get state from coordinates
+// Configure Multer for image uploads
+const upload = multer({ dest: "uploads/" });
+
+// Helper function to get state from coordinates
 const getStateFromCoordinates = async (lat, lng) => {
   try {
     const response = await axios.get(`${NOMINATIM_URL}&lat=${lat}&lon=${lng}`);
@@ -89,7 +96,7 @@ app.get("/api/predict-rainfall", async (req, res) => {
     console.log(`Preparing to call Python script with inputs: state=${state}, year=${year}, month=${month}`);
 
     // Execute the Python script for rainfall prediction
-    const pythonScriptPath = "./predict_rainfall.py"; // Path to your Python script
+    const pythonScriptPath = path.resolve("ACM", "HACKNITE", "C:\\Users\\rushi\\Documents\\GitHub\\New folder\\ACM\\HACKNITE\\predict_image.py");
     const inputData = JSON.stringify({ state, year, month }); // Input data for the Python script
 
     exec(`python ${pythonScriptPath} '${inputData}'`, (error, stdout, stderr) => {
@@ -143,6 +150,62 @@ app.get("/api/weather", async (req, res) => {
   } catch (error) {
     console.error("Error fetching weather data:", error);
     res.status(500).json({ error: "Failed to fetch weather data." });
+  }
+});
+
+// Function to run the TensorFlow model prediction (Python script)
+import path from "path";
+
+const runPrediction = (filePath) => {
+  return new Promise((resolve, reject) => {
+    // Use the absolute path to the Python script
+    const pythonScriptPath = path.resolve("ACM", "HACKNITE", "C:\\Users\\rushi\\Documents\\GitHub\\New folder\\ACM\\HACKNITE\\predict_image.py");
+    console.log("Python script path:", pythonScriptPath);
+
+    // Normalize the uploaded file path
+    const normalizedFilePath = path.resolve(filePath);
+    console.log("Normalized file path:", normalizedFilePath);
+
+    // Execute the Python script
+    exec(`python "${pythonScriptPath}" '${normalizedFilePath}'`, (error, stdout, stderr) => {
+      if (error) {
+        console.error("Error executing Python script:", error);
+        return reject("Failed to execute the prediction model.");
+      }
+
+      if (stderr) {
+        console.error("Python script stderr:", stderr);
+        return reject("Error in Python script execution.");
+      }
+
+      try {
+        const result = JSON.parse(stdout); // Parse the output from the Python script
+        resolve(result);
+      } catch (parseError) {
+        console.error("Error parsing Python script output:", parseError);
+        reject("Invalid response from the prediction model.");
+      }
+    });
+  });
+};
+
+// Endpoint to handle image upload and prediction
+app.post("/api/predict-image", upload.single("image"), async (req, res) => {
+  try {
+    const filePath = req.file.path; // Path to the uploaded image
+    console.log("Uploaded image path:", filePath);
+
+    // Run the TensorFlow model prediction
+    const predictionResult = await runPrediction(filePath);
+
+    // Clean up the uploaded file
+    fs.unlinkSync(filePath);
+
+    // Send the prediction result to the frontend
+    res.status(200).json(predictionResult);
+  } catch (error) {
+    console.error("Error during image prediction:", error);
+    res.status(500).json({ error: "Failed to process the image." });
   }
 });
 

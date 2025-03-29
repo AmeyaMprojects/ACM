@@ -697,7 +697,9 @@ body {
   text-align: center;
 }
 
-
+.button { 
+  margin-bottom: 40px;}
+  
 
 button:hover {
   background-color: #1b5e20;

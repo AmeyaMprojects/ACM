@@ -71,35 +71,37 @@ function Dashboard() {
   return (
     <div className="dashboard">
       {!isLoggedIn ? (
-        <div className="login-page">
-          <h1>Login</h1>
-          <form onSubmit={handleLogin} className="login-form">
-            <div>
-              <label htmlFor="username">Username:</label>
-              <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            {error && <p className="error-message">{error}</p>}
-            <button type="submit">Login</button>
-          </form>
+        <div className="centered-content">
+          <div className="login-page">
+            <h1>Login</h1>
+            <form onSubmit={handleLogin} className="login-form">
+              <div>
+                <label htmlFor="username">Username:</label>
+                <input
+                  type="text"
+                  id="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="password">Password:</label>
+                <input
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              {error && <p className="error-message">{error}</p>}
+              <button type="submit">Login</button>
+            </form>
+          </div>
         </div>
       ) : currentStep === "welcome" ? (
-        <div>
+        <div className="centered-content">
           <WelcomeSection />
           <button
             onClick={() => handleNext()}
@@ -117,7 +119,7 @@ function Dashboard() {
           </button>
         </div>
       ) : currentStep === "map" ? (
-        <div>
+        <div className="centered-content">
           <MapComponent onCoordinatesSelect={handleNext} />
           <button
             onClick={() => handleNext()}
@@ -135,12 +137,13 @@ function Dashboard() {
           </button>
         </div>
       ) : currentStep === "soil" ? (
-        <SoilInfo onSubmit={handleSoilSubmit} />
+        <div className="centered-content">
+          <SoilInfo onSubmit={handleSoilSubmit} />
+        </div>
       ) : (
         <div className="report-dashboard">
           <div className="sidebar">
             <ul>
-              {/* <li onClick={() => setActiveComponent("WelcomeSection")}>Welcome Section</li> */}
               <li onClick={() => setActiveComponent("MicroclimatePrediction")}>
                 Microclimate Prediction
               </li>
@@ -151,7 +154,6 @@ function Dashboard() {
               <li onClick={() => setActiveComponent("SustainabilityScore")}>
                 Sustainability Score
               </li>
-              {/* <li onClick={() => setActiveComponent("MapComponent")}>Map Selector</li> */}
             </ul>
           </div>
           <div className="main-content">{renderComponent()}</div>

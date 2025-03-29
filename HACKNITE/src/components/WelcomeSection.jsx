@@ -1,7 +1,7 @@
 import React from 'react';
 
 const WelcomeSection = () => {
-  const farmerName = "John Doe"; // Replace with dynamic data
+  const farmerName = "RAJU"; // Replace with dynamic data
   return (
     <div className="welcome-section">
       <h1>Good Morning, {farmerName}!</h1>

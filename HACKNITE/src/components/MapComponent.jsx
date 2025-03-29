@@ -26,8 +26,23 @@ const MapComponent = () => {
       lng: event.latLng.lng(),
     };
     setSelectedLocation(clickedLocation);
-    onCoordinatesSelect(clickedLocation);
-    };
+  
+    // Send the selected coordinates to the backend
+    fetch("http://localhost:5000/api/coordinates", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(clickedLocation),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Coordinates sent to backend:", data);
+      })
+      .catch((error) => {
+        console.error("Error sending coordinates to backend:", error);
+      });
+  };
 
   // Handle place selection from the search bar
   const handlePlaceSelect = () => {

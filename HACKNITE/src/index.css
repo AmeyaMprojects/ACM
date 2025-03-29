@@ -666,7 +666,7 @@ body {
 }
 
 button {
-  margin-top: 20px;
+  margin: 40px 40px;
   padding: 12px 24px;
   background-color: #2e7d32;
   color: white;

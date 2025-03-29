@@ -112,7 +112,7 @@ function Dashboard() {
       ) : currentStep === "welcome" ? (
         <div className="centered-content">
           <WelcomeSection />
-          <button
+          <button className="next-button"
             onClick={() => handleNext()}
             style={{
               marginTop: "20px",

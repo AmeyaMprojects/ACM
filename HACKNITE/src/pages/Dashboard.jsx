@@ -7,6 +7,7 @@ import MicroclimatePrediction from "../components/MicroclimatePrediction";
 import DiagnosisTool from "../components/DiagnosisTool";
 import IntercroppingSuggestions from "../components/IntercroppingSuggestions";
 import SustainabilityScore from "../components/SustainabilityScore";
+import Fert from "../components/Fert"; // Import the Fert component
 
 let globalCoordinates = null; // Global variable to store coordinates
 
@@ -70,6 +71,8 @@ function Dashboard() {
         return <IntercroppingSuggestions />;
       case "SustainabilityScore":
         return <SustainabilityScore />;
+      case "Fert": // Add Fert as a case
+        return <Fert />;
       case "MapComponent":
         return <MapComponent />;
       default:
@@ -112,7 +115,8 @@ function Dashboard() {
       ) : currentStep === "welcome" ? (
         <div className="centered-content">
           <WelcomeSection />
-          <button className="next-button"
+          <button
+            className="next-button"
             onClick={() => handleNext()}
             style={{
               marginTop: "20px",
@@ -160,13 +164,16 @@ function Dashboard() {
               <li onClick={() => setActiveComponent("MicroclimatePrediction")}>
                 Microclimate Prediction
               </li>
-              <li onClick={() => setActiveComponent("DiagnosisTool")}>Diagnosis Tool</li>
+              <li onClick={() => setActiveComponent("DiagnosisTool")}>
+                Diagnosis Tool
+              </li>
               <li onClick={() => setActiveComponent("IntercroppingSuggestions")}>
                 Intercropping Suggestions
               </li>
               <li onClick={() => setActiveComponent("SustainabilityScore")}>
                 Sustainability Score
               </li>
+              <li onClick={() => setActiveComponent("Fert")}>Fertilizer Recommendations</li>
             </ul>
           </div>
           <div className="main-content">{renderComponent()}</div>

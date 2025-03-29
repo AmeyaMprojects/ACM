@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 const cropsData = [
-  { name: "Apple", image: "/images/apple.jpg" },
-  { name: "Potato", image: "/images/potato.jpg" },
-  { name: "Maize", image: "/images/maize.jpg" },
-  { name: "Strawberry", image: "/images/strawberry.jpg" },
+  { name: "Apple", image: "/apple.jpg" },
+  { name: "Potato", image: "/potato.jpg" },
+  { name: "Maize", image: "/maize.jpg" },
+  { name: "Strawberry", image: "/strawberry.jpg" },
 ];
 
 function Crops({ onSubmit }) {

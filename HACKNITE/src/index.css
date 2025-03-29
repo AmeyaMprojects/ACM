@@ -11,43 +11,44 @@ body {
 
 /* Header Styling for Right-Aligned Navigation */
 .app-header {
-  width: 100%;
-  padding: 1rem 0;
-}
-
-.header-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 20px 40px;
+  background-color: #FAFEE7;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 20px; /* Space between links */
 }
 
 .nav-link {
   text-decoration: none;
-  color: #2c3e50;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
 }
 
 .nav-link:hover {
-  color: #1a996f;
+  color: #115a1d; /* Highlight color on hover */
+  transform: scale(1.1); /* Slightly enlarge the link on hover */
 }
 
-/* Optional: Active link styling */
-.nav-link.active {
-  color: #3498db;
-  border-bottom: 2px solid #3498db;
+.nav-link:active {
+  color: #0c6d09; /* Slightly darker color when clicked */
 }
 
 .hero-section {
-  background-image: url("../public/Hero_Farm.jpg"); /* Replace with the actual path to your image */
+  background-image: url("/Hero_Farm.jpg"); /* Replace with the actual path to your image */
   background-size: cover; /* Ensures the image covers the entire section */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -168,3 +169,275 @@ body {
   width: 300px;
   border-radius: 10px;
 }
+
+
+.welcome-section {
+  max-width: 700px;
+  margin: 50px auto; /* Center the component */
+  padding: 20px;
+  background: linear-gradient(135deg, #f1f8e9, #c8e6c9); /* Light green gradient */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.welcome-section h1 {
+  font-size: 2.5rem;
+  color: #2e7d32; /* Dark green */
+  margin-bottom: 20px;
+}
+
+.farm-summary {
+  text-align: left; /* Align text to the left for better readability */
+  margin-top: 20px;
+  padding: 20px;
+  background: #ffffff; /* White background for the summary section */
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for the summary section */
+}
+
+.farm-summary p {
+  font-size: 1.2rem;
+  color: #388e3c; /* Medium green */
+  margin: 10px 0;
+}
+
+.farm-summary p strong {
+  color: #1b5e20; /* Darker green for emphasis */
+}
+
+
+.microclimate-prediction {
+  max-width: 700px;
+  margin: 50px auto; /* Center the component */
+  padding: 20px;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Light blue gradient */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.microclimate-prediction h2 {
+  font-size: 2rem;
+  color: #1565c0; /* Dark blue */
+  margin-bottom: 20px;
+}
+
+.microclimate-prediction .charts {
+  margin: 20px 0;
+  padding: 20px;
+  background: #ffffff; /* White background for the charts section */
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for the charts section */
+  text-align: left;
+}
+
+.microclimate-prediction .charts p {
+  font-size: 1.2rem;
+  color: #1e88e5; /* Medium blue */
+  margin: 10px 0;
+}
+
+.microclimate-prediction .charts p strong {
+  color: #0d47a1; /* Darker blue for emphasis */
+}
+
+.microclimate-prediction button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #1565c0, #1e88e5); /* Blue gradient button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.microclimate-prediction button:hover {
+  background: linear-gradient(135deg, #0d47a1, #1565c0); /* Darker blue on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.microclimate-prediction button:active {
+  transform: scale(0.95); /* Slightly shrink on click */
+}
+
+
+
+
+.diagnosis-tool {
+  max-width: 600px;
+  margin: 50px auto; /* Center the component */
+  padding: 20px;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9); /* Light green gradient */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.diagnosis-tool h2 {
+  font-size: 2rem;
+  color: #2e7d32; /* Dark green */
+  margin-bottom: 20px;
+}
+
+.diagnosis-tool input[type="file"] {
+  margin: 20px 0;
+  padding: 10px;
+  border: 2px solid #66bb6a; /* Green border */
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.diagnosis-tool input[type="file"]:hover {
+  border-color: #2e7d32; /* Darker green on hover */
+}
+
+.diagnosis-tool img {
+  margin: 20px 0;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for the image */
+}
+
+.diagnosis-tool p {
+  font-size: 1.2rem;
+  color: #388e3c; /* Medium green */
+  margin: 20px 0;
+}
+
+.diagnosis-tool button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #2e7d32, #66bb6a); /* Green gradient button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.diagnosis-tool button:hover {
+  background: linear-gradient(135deg, #1b5e20, #388e3c); /* Darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.diagnosis-tool button:active {
+  transform: scale(0.95); /* Slightly shrink on click */
+}
+
+.intercropping-suggestions {
+  max-width: 600px;
+  margin: 50px auto; /* Center the component */
+  padding: 20px;
+  background: linear-gradient(135deg, #f1f8e9, #c5e1a5); /* Light green gradient */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.intercropping-suggestions h2 {
+  font-size: 2rem;
+  color: #2e7d32; /* Dark green */
+  margin-bottom: 20px;
+}
+
+.intercropping-suggestions ul {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0;
+  margin: 20px 0;
+}
+
+.intercropping-suggestions li {
+  font-size: 1.2rem;
+  color: #388e3c; /* Medium green */
+  margin: 10px 0;
+  padding: 10px;
+  background: #ffffff; /* White background for list items */
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for list items */
+}
+
+.intercropping-suggestions li strong {
+  color: #1b5e20; /* Darker green for emphasis */
+}
+
+.intercropping-suggestions button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #2e7d32, #66bb6a); /* Green gradient button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.intercropping-suggestions button:hover {
+  background: linear-gradient(135deg, #1b5e20, #388e3c); /* Darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.intercropping-suggestions button:active {
+  transform: scale(0.95); /* Slightly shrink on click */
+}
+
+
+.sustainability-score {
+  max-width: 600px;
+  margin: 50px auto; /* Center the component */
+  padding: 20px;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9); /* Light green gradient */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.sustainability-score h2 {
+  font-size: 2rem;
+  color: #2e7d32; /* Dark green */
+  margin-bottom: 20px;
+}
+
+.sustainability-score p {
+  font-size: 1.2rem;
+  color: #388e3c; /* Medium green */
+  margin: 20px 0;
+}
+
+.sustainability-score p strong {
+  color: #1b5e20; /* Darker green for emphasis */
+}
+
+.sustainability-score button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #2e7d32, #66bb6a); /* Green gradient button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.sustainability-score button:hover {
+  background: linear-gradient(135deg, #1b5e20, #388e3c); /* Darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.sustainability-score button:active {
+  transform: scale(0.95); /* Slightly shrink on click */
+}
+

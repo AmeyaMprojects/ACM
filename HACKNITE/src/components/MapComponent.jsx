@@ -4,6 +4,8 @@ import { GoogleMap, LoadScript, Marker, Autocomplete } from "@react-google-maps/
 const containerStyle = {
   width: "100%",
   height: "400px",
+  borderRadius: "20px",
+  overflow: "hidden",
 };
 
 const defaultCenter = {

@@ -28,24 +28,26 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 20px; /* Space between links */
+  gap: 40px; /* Space between Home, About Us, and Dashboard */
 }
 
 .nav-link {
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
-  transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+  color: black; /* Default color */
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #115a1d; /* Highlight color on hover */
-  transform: scale(1.1); /* Slightly enlarge the link on hover */
+  color: #2e7d32; /* Green on hover */
+  transform: scale(1.1);
 }
 
 .nav-link:active {
-  color: #0c6d09; /* Slightly darker color when clicked */
+  color: #0c6d09; /* Slightly darker green when clicked */
 }
+
 
 .hero-section {
   background-image: url("/Hero_Farm.jpg"); /* Replace with the actual path to your image */
@@ -441,3 +443,14 @@ body {
   transform: scale(0.95); /* Slightly shrink on click */
 }
 
+.app-footer {
+  background-color: #36200B; /* Dark soil brown */
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

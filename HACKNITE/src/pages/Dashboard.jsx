@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import WelcomeSection from "../components/WelcomeSection";
 import MapComponent from "../components/MapComponent";
 import SoilInfo from "../components/SoilInfo";
+import Crops from "../components/Crops";
 import MicroclimatePrediction from "../components/MicroclimatePrediction";
 import DiagnosisTool from "../components/DiagnosisTool";
 import IntercroppingSuggestions from "../components/IntercroppingSuggestions";
@@ -39,12 +40,20 @@ function Dashboard() {
       setCurrentStep("map");
     } else if (currentStep === "map") {
       setCurrentStep("soil");
+    } else if (currentStep === "soil") {
+      setCurrentStep("crops");
     }
   };
 
   const handleSoilSubmit = (soilData) => {
     console.log("Soil Data Submitted:", soilData);
     alert("Soil data submitted successfully!");
+    setCurrentStep("crops"); // Transition to the crops step
+  };
+
+  const handleCropsSubmit = (cropsData) => {
+    console.log("Crops Data Submitted:", cropsData);
+    alert("Crops data submitted successfully!");
     setCurrentStep("report"); // Transition to the report generation step
     setShowSidebar(true); // Show the sidebar
   };
@@ -139,6 +148,10 @@ function Dashboard() {
       ) : currentStep === "soil" ? (
         <div className="centered-content">
           <SoilInfo onSubmit={handleSoilSubmit} />
+        </div>
+      ) : currentStep === "crops" ? (
+        <div className="centered-content">
+          <Crops onSubmit={handleCropsSubmit} />
         </div>
       ) : (
         <div className="report-dashboard">

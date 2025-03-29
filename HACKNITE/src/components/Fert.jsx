@@ -131,19 +131,85 @@ export default function Fert() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Fertilizer and Crop Recommendation</h1>
-      <button onClick={handleRecommend}>Get Recommendation</button>
+    <div style={{ 
+      maxWidth: "600px",
+      margin: "0 auto",
+      padding: "20px",
+      backgroundColor: "white",
+      borderRadius: "15px",
+      boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
+    }}>
+      <h2 style={{ 
+        color: "#2e7d32",
+        marginBottom: "20px",
+        textAlign: "center"
+      }}>
+        Fertilizer and Crop Recommendation
+      </h2>
+      
+      <button 
+        onClick={handleRecommend}
+        style={{
+          display: "block",
+          width: "100%",
+          padding: "12px",
+          backgroundColor: "#2e7d32",
+          color: "white",
+          border: "none",
+          borderRadius: "6px",
+          fontSize: "16px",
+          fontWeight: "600",
+          cursor: "pointer",
+          margin: "20px 0",
+          transition: "background-color 0.3s ease"
+        }}
+      >
+        Get Recommendation
+      </button>
+      
       {recommendation && (
-        <div style={{ marginTop: "20px" }}>
-          <h2>Recommended Crop: {recommendation.crop}</h2>
-          <p>Intercrop With: {recommendation.intercrop}</p>
-          <p>Price per kg: ₹{recommendation.price_per_kg}</p>
-          <p>Soil Health Score: {recommendation.soil_health_score}</p>
-          <h3>Fertilizer Recommendations:</h3>
-          <ul>
+        <div style={{ 
+          marginTop: "20px",
+          padding: "20px",
+          backgroundColor: "#f8f9fa",
+          borderRadius: "10px"
+        }}>
+          <h3 style={{ color: "#2e7d32", marginTop: "0" }}>Recommended Crop: 
+            <span style={{ textTransform: "capitalize" }}> {recommendation.crop}</span>
+          </h3>
+          
+          <ul style={{ 
+            listStyle: "none",
+            padding: "0",
+            margin: "15px 0"
+          }}>
+            <li style={{ marginBottom: "10px" }}>
+              <strong>Intercrop With:</strong> 
+              <span style={{ textTransform: "capitalize" }}> {recommendation.intercrop}</span>
+            </li>
+            <li style={{ marginBottom: "10px" }}>
+              <strong>Price per kg:</strong> ₹{recommendation.price_per_kg}
+            </li>
+            <li style={{ marginBottom: "10px" }}>
+              <strong>Soil Health Score:</strong> {recommendation.soil_health_score}
+            </li>
+          </ul>
+          
+          <h4 style={{ color: "#2e7d32", marginBottom: "10px" }}>Fertilizer Recommendations:</h4>
+          <ul style={{ 
+            listStyle: "none",
+            padding: "0",
+            margin: "15px 0"
+          }}>
             {recommendation.fertilizer_recommendations.map((rec, index) => (
-              <li key={index}>{rec}</li>
+              <li key={index} style={{ 
+                marginBottom: "8px",
+                padding: "8px",
+                backgroundColor: "#e8f5e9",
+                borderRadius: "5px"
+              }}>
+                {rec}
+              </li>
             ))}
           </ul>
         </div>

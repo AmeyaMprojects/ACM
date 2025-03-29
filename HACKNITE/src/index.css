@@ -697,16 +697,7 @@ body {
   text-align: center;
 }
 
-button {
-  margin: 40px 40px;
-  padding: 12px 24px;
-  background-color: #2e7d32;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-}
+
 
 button:hover {
   background-color: #1b5e20;

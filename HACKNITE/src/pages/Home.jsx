@@ -33,7 +33,7 @@ export default function Home() {
       <section className="empowering">
         <h2>Empowering Farmers</h2>
         <div className="empowering-content">
-          <img src="../public/plumeria-hawaii.jpg" alt="Flower in field" className="empowering-img"/>
+          <img src="plumeria-hawaii.jpg" alt="Flower in field" className="empowering-img"/>
           <div className="empowering-text">
             <h3>Harnessing AI for Sustainable Farming</h3>
             <p>AI-driven insights help farmers make informed decisions based on real-time data.</p>
@@ -47,10 +47,11 @@ export default function Home() {
         <div className="cultivating-content">
           <h2>Cultivating a Revolution</h2>
           <p>Empowering smallholder farmers with AI-driven tools for better decision-making and resource management.</p>
-          <img src="../public/soil_plant.jpg" alt="Growing Plant" className="cultivating-img"/>
+          <img src="soil_plant.jpg" alt="Growing Plant" className="cultivating-img"/>
         </div>
       </section>
     </div>
+    
 
 
       {/* Map Section */}

@@ -9,43 +9,129 @@ body {
   text-align: center;
 }
 
+/* Header Styling for Right-Aligned Navigation */
+.app-header {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #1a996f;
+}
+
+/* Optional: Active link styling */
+.nav-link.active {
+  color: #3498db;
+  border-bottom: 2px solid #3498db;
+}
+
 .hero-section {
-  background-image: url("../public/Hero-farm.jpg"); /* Replace with the actual path to your image */
+  background-image: url("../public/Hero_Farm.jpg"); /* Replace with the actual path to your image */
   background-size: cover; /* Ensures the image covers the entire section */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
   color: white; /* Ensures text is visible on the background */
   text-align: center; /* Centers the text */
   padding: 50px 20px; /* Adds spacing inside the section */
+  height: 100vh; /* Makes the section take up the full viewport height */
+  display: flex; /* Enables flexbox for centering content */
+  flex-direction: column; /* Aligns content vertically */
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+}
+
+.hero-section h1 {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .info-section {
-  background: #004d00;
-  color: white;
+  text-align: center;
   padding: 50px 20px;
+  background: linear-gradient(135deg, #2e7d32, #66bb6a); /* Green gradient background */
+  color: white;
 }
 
 .info-section h1 {
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .cards {
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .card {
-  background: #006400;
-  color: white;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9); /* Light green gradient for card */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  border-radius: 10px;
-  width: 250px;
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
 }
 
+.card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #1b5e20; /* Dark green for title */
+}
+
+.card p {
+  font-size: 1rem;
+  color: #388e3c; /* Medium green for text */
+  line-height: 1.5;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Lift the card on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a stronger shadow */
+}
+
+.card:hover h2 {
+  color: #2e7d32; /* Change title color on hover */
+}
+
+.card:hover p {
+  color: #66bb6a; /* Change paragraph color on hover */
+}
 .empowering {
-  background: white;
+  background: rgb(11, 39, 7);
   padding: 50px 20px;
+  color: white;
+}
+
+.empowering h2 {
+  font-size: 3rem;
+  margin-bottom: 30px;
 }
 
 .empowering-content {
@@ -56,7 +142,7 @@ body {
 }
 
 .empowering-img {
-  width: 300px;
+  width: 500px;
   border-radius: 10px;
 }
 
@@ -66,7 +152,7 @@ body {
 }
 
 .cultivating {
-  background: #1b5e20;
+  background: #51d259;
   color: white;
   padding: 50px 20px;
 }

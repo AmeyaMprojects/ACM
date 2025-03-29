@@ -1,22 +1,19 @@
+// components/Header.jsx
 import React from "react";
-import { Link } from "react-router-dom"; // For routing (optional)
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
     <header className="app-header">
-      <nav className="navbar">
-        <ul className="nav-links">
-          <li>
-            <Link to="/">Home</Link> {/* Link to Home page */}
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link> {/* Link to Dashboard page */}
-          </li>
-          <li>
-            <Link to="/about">About Us</Link> {/* Link to About Us page */}
-          </li>
-        </ul>
-      </nav>
+      <div className="header-content">
+        {/* Empty div to push nav to the right */}
+        <div></div>
+        <nav className="nav-links">
+          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/dashboard" className="nav-link">Dashboard</Link>
+          <Link to="/about" className="nav-link">About Us</Link>
+        </nav>
+      </div>
     </header>
   );
 }

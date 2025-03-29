@@ -1,27 +1,67 @@
-import React, { useState } from 'react';
-import WelcomeSection from '../components/WelcomeSection';
-import MicroclimatePrediction from '../components/MicroclimatePrediction';
-import DiagnosisTool from '../components/DiagnosisTool';
-import IntercroppingSuggestions from '../components/IntercroppingSuggestions';
-import SustainabilityScore from '../components/SustainabilityScore';
-import MapComponent from '../components/MapComponent'; // Import the Map Selector Component
+import React, { useState } from "react";
+import WelcomeSection from "../components/WelcomeSection";
+import MapComponent from "../components/MapComponent";
+import SoilInfo from "../components/SoilInfo";
+import MicroclimatePrediction from "../components/MicroclimatePrediction";
+import DiagnosisTool from "../components/DiagnosisTool";
+import IntercroppingSuggestions from "../components/IntercroppingSuggestions";
+import SustainabilityScore from "../components/SustainabilityScore";
+
+let globalCoordinates = null; // Global variable to store coordinates
 
 function Dashboard() {
-  const [activeComponent, setActiveComponent] = useState('WelcomeSection');
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
+  const [username, setUsername] = useState(""); // State to track username input
+  const [password, setPassword] = useState(""); // State to track password input
+  const [error, setError] = useState(""); // State to track login errors
+  const [currentStep, setCurrentStep] = useState("welcome"); // State to track the current step
+  const [activeComponent, setActiveComponent] = useState("WelcomeSection"); // State to track active sidebar component
+  const [showSidebar, setShowSidebar] = useState(false); // State to toggle sidebar visibility
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // Basic login validation (replace with real authentication logic if needed)
+    if (username === "admin" && password === "password") {
+      setIsLoggedIn(true);
+      setError(""); // Clear any previous errors
+    } else {
+      setError("Invalid username or password");
+    }
+  };
+
+  const handleNext = (coordinates) => {
+    if (coordinates) {
+      globalCoordinates = coordinates; // Store the coordinates in the global variable
+      console.log("Global Coordinates:", globalCoordinates);
+    }
+    if (currentStep === "welcome") {
+      setCurrentStep("map");
+    } else if (currentStep === "map") {
+      setCurrentStep("soil");
+    }
+  };
+
+  const handleSoilSubmit = (soilData) => {
+    console.log("Soil Data Submitted:", soilData);
+    alert("Soil data submitted successfully!");
+    setCurrentStep("report"); // Transition to the report generation step
+    setShowSidebar(true); // Show the sidebar
+  };
 
   const renderComponent = () => {
     switch (activeComponent) {
-      case 'WelcomeSection':
+      case "WelcomeSection":
         return <WelcomeSection />;
-      case 'MicroclimatePrediction':
+      case "MicroclimatePrediction":
         return <MicroclimatePrediction />;
-      case 'DiagnosisTool':
+      case "DiagnosisTool":
         return <DiagnosisTool />;
-      case 'IntercroppingSuggestions':
+      case "IntercroppingSuggestions":
         return <IntercroppingSuggestions />;
-      case 'SustainabilityScore':
+      case "SustainabilityScore":
         return <SustainabilityScore />;
-      case 'MapComponent': // Add case for Map Selector Component
+      case "MapComponent":
         return <MapComponent />;
       default:
         return <WelcomeSection />;
@@ -30,17 +70,93 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <div className="sidebar">
-        <ul>
-          <li onClick={() => setActiveComponent('WelcomeSection')}>Welcome Section</li>
-          <li onClick={() => setActiveComponent('MicroclimatePrediction')}>Microclimate Prediction</li>
-          <li onClick={() => setActiveComponent('DiagnosisTool')}>Diagnosis Tool</li>
-          <li onClick={() => setActiveComponent('IntercroppingSuggestions')}>Intercropping Suggestions</li>
-          <li onClick={() => setActiveComponent('SustainabilityScore')}>Sustainability Score</li>
-          <li onClick={() => setActiveComponent('MapComponent')}>Map Selector</li> {/* Add Map Selector to Sidebar */}
-        </ul>
-      </div>
-      <div className="main-content">{renderComponent()}</div>
+      {!isLoggedIn ? (
+        <div className="login-page">
+          <h1>Login</h1>
+          <form onSubmit={handleLogin} className="login-form">
+            <div>
+              <label htmlFor="username">Username:</label>
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            {error && <p className="error-message">{error}</p>}
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      ) : currentStep === "welcome" ? (
+        <div>
+          <WelcomeSection />
+          <button
+            onClick={() => handleNext()}
+            style={{
+              marginTop: "20px",
+              padding: "10px 20px",
+              backgroundColor: "#2e7d32",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            Next
+          </button>
+        </div>
+      ) : currentStep === "map" ? (
+        <div>
+          <MapComponent onCoordinatesSelect={handleNext} />
+          <button
+            onClick={() => handleNext()}
+            style={{
+              marginTop: "20px",
+              padding: "10px 20px",
+              backgroundColor: "#2e7d32",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            Next
+          </button>
+        </div>
+      ) : currentStep === "soil" ? (
+        <SoilInfo onSubmit={handleSoilSubmit} />
+      ) : (
+        <div className="report-dashboard">
+          <div className="sidebar">
+            <ul>
+              {/* <li onClick={() => setActiveComponent("WelcomeSection")}>Welcome Section</li> */}
+              <li onClick={() => setActiveComponent("MicroclimatePrediction")}>
+                Microclimate Prediction
+              </li>
+              <li onClick={() => setActiveComponent("DiagnosisTool")}>Diagnosis Tool</li>
+              <li onClick={() => setActiveComponent("IntercroppingSuggestions")}>
+                Intercropping Suggestions
+              </li>
+              <li onClick={() => setActiveComponent("SustainabilityScore")}>
+                Sustainability Score
+              </li>
+              {/* <li onClick={() => setActiveComponent("MapComponent")}>Map Selector</li> */}
+            </ul>
+          </div>
+          <div className="main-content">{renderComponent()}</div>
+        </div>
+      )}
     </div>
   );
 }

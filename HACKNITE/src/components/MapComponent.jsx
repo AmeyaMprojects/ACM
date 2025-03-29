@@ -25,8 +25,8 @@ const MapComponent = () => {
       lng: event.latLng.lng(),
     };
     setSelectedLocation(clickedLocation);
-    sendCoordinatesToBackend(clickedLocation);
-  };
+    onCoordinatesSelect(clickedLocation);
+    };
 
   // Handle place selection from the search bar
   const handlePlaceSelect = () => {

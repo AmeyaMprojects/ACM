@@ -9,9 +9,14 @@ body {
   text-align: center;
 }
 
+.logo{
+  width: 70px;
+
+}
+
 /* Header Styling for Right-Aligned Navigation */
 .app-header {
-  padding: 20px 40px;
+  padding: 10px 40px;
   background-color: #FAFEE7;
   display: flex;
   justify-content: space-between;

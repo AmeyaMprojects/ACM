@@ -536,12 +536,13 @@ body {
 }
 
 .login-page {
+  background-image: url("../public/bg.jpg");
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(135deg, #2e7d32, #66bb6a); /* Green gradient */
   color: white;
   width: 100%;
 }

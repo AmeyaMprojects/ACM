@@ -7,7 +7,7 @@ export default function Header() {
     <header className="app-header">
       <div className="header-content">
         {/* Empty div to push nav to the right */}
-        <img src="/logo.jpeg" alt="AgriOne Logo" className="logo" />
+        <img src="/logo2.png" alt="AgriOne Logo" className="logo" />
         <div></div>
         <nav className="nav-links">
           <Link to="/" className="nav-link">Home</Link>

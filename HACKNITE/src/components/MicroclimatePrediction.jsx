@@ -1,16 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 
 const MicroclimatePrediction = () => {
+  const [weatherData, setWeatherData] = useState(null);
+  const [error, setError] = useState(null);
+
+  // Fetch weather data from the backend
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/weather");
+        if (!response.ok) {
+          throw new Error("Failed to fetch weather data");
+        }
+
+        const data = await response.json();
+        setWeatherData(data);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+
+    fetchWeatherData();
+  }, []);
+
   return (
     <div className="microclimate-prediction">
       <h2>Physics-Guided Microclimate Prediction</h2>
-      <div className="charts">
-        {/* Placeholder for dynamic charts */}
-        <p><strong>Temperature:</strong> 25°C (80% confidence)</p>
-        <p><strong>Humidity:</strong> 60% (75% confidence)</p>
-        <p><strong>Rainfall:</strong> 5mm expected tomorrow (90% confidence)</p>
-      </div>
-      <button>View Full Report</button>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {weatherData ? (
+        <div className="charts">
+          <p>
+            <strong>Temperature:</strong> {weatherData.temperature}°C
+          </p>
+          <p>
+            <strong>Humidity:</strong> {weatherData.humidity}%
+          </p>
+          <p>
+            <strong>Rainfall:</strong> {weatherData.rainfall}mm expected in the last hour
+          </p>
+        </div>
+      ) : (
+        <p>Loading weather data...</p>
+      )}
+      <button onClick={() => window.location.reload()}>Refresh Data</button>
     </div>
   );
 };

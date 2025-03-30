@@ -23,7 +23,7 @@ function Crops({ onSubmit }) {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission behavior
     const selectedCrops = Object.entries(cropSelection)
       .filter(([_, value]) => value === "yes")
       .map(([crop]) => crop);
@@ -32,7 +32,7 @@ function Crops({ onSubmit }) {
     if (onSubmit) {
       onSubmit(selectedCrops);
     }
-    alert("Crops selection submitted successfully!");
+    alert("Crops selection submitted successfully!"); // Ensure only one alert is shown
   };
 
   return (
@@ -43,7 +43,7 @@ function Crops({ onSubmit }) {
       </div>
 
       {/* Crop selection container */}
-      <div className="crops-container">
+      <form onSubmit={handleSubmit} className="crops-container">
         <div className="crops-grid">
           {cropsData.map((crop) => (
             <div key={crop.name} className="crop-card">
@@ -67,10 +67,10 @@ function Crops({ onSubmit }) {
             </div>
           ))}
         </div>
-        <button onClick={handleSubmit} className="submit-button">
+        <button type="submit" className="submit-button">
           Submit
         </button>
-      </div>
+      </form>
     </div>
   );
 }

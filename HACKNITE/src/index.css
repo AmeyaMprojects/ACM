@@ -190,6 +190,8 @@ body {
   background-attachment: fixed;
 }
 
+
+
 .sidebar {
   width: 250px;
   background: linear-gradient(135deg, #70ff77, #027b08); /* Green gradient */
@@ -272,7 +274,7 @@ body {
   max-width: 700px;
   margin: 50px auto; /* Center the component */
   padding: 20px;
-  background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Light blue gradient */
+  background: linear-gradient(135deg, #42ffb7, #8cfb2b); /* Light blue gradient */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   text-align: center;
@@ -294,7 +296,7 @@ body {
 /* Styling for the heading */
 .microclimate-prediction h2 {
   font-size: 2rem;
-  color: #1565c0; /* Dark blue */
+  color: #fcfdff; /* Dark blue */
   margin-bottom: 20px;
   animation: slideIn 0.8s ease-out; /* Slide-in effect for heading */
 }
@@ -932,7 +934,7 @@ button:hover {
 }
 
 .crop-image {
-  width: 100%;
+  width: 190px;
   height: 150px;
   object-fit: cover;
   border-radius: 10px;
@@ -991,4 +993,12 @@ button:hover {
   transform: translateY(1px);
 }
 
+.title-container h2 {
+  color: #000; /* Text color (black or any other color) */
+  text-shadow: 
+    2px 2px 4px rgba(255, 255, 255, 0.5); /* Drop shadow with blur */
+  font-size: 2rem; /* Adjust font size as needed */
+  font-weight: bold; /* Make the text bold */
+  text-align: center; /* Center the text */
+}
 

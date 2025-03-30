@@ -37,7 +37,7 @@ const DiagnosisTool = () => {
 
   return (
     <div className="diagnosis-tool">
-      <h2>Voice/Image-Based Diagnosis</h2>
+      <h2>Image-Based Diagnosis</h2>
       <input type="file" accept="image/*" onChange={handleImageUpload} />
       {image && <img src={image} alt="Uploaded crop" style={{ width: "200px", height: "200px" }} />}
       <p><strong>Analysis:</strong> {analysis || "No analysis yet."}</p>

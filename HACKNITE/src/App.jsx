@@ -15,6 +15,36 @@ export default function App() {
     "https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/03/29/19/20250329194021-6JJPRBJN.json"
   );
 
+  
+
+  {isChatOpen && (
+    <div 
+      style={{
+        position: "fixed",
+        bottom: "80px",
+        right: "20px",
+        width: "350px",
+        height: "500px",
+        zIndex: "1000",
+        backgroundColor: "white",
+        borderRadius: "10px",
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+      }}
+    >
+      <iframe
+        src={chatbotUrl}
+        width="100%"
+        height="100%"
+        style={{ border: "none", borderRadius: "10px" }}
+        title="Chatbot"
+        allow="microphone" // ✅ Enable microphone access
+        sandbox="allow-scripts allow-same-origin allow-forms allow-modals"
+      />
+    </div>
+  )}
+
+
+
   return (
     <Router>
       <div className="app-container">

@@ -43,6 +43,16 @@ export default function Fert() {
     Urea: { N: 460, P: 0, K: 0 },
     DAP: { N: 180, P: 460, K: 0 },
     MOP: { N: 0, P: 0, K: 600 },
+    NPK_10_26_26: { N: 100, P: 260, K: 260 },
+    Organic: { N: 20, P: 10, K: 15 } // Approximate values for organic matter
+  };
+
+  const fertilizerLinks = {
+    Urea: "https://www.google.com/search?q=urea+cheapest+fertilizer",
+    DAP: "https://www.google.com/search?q=DAP+cheapest+fertilizer&sca_esv=c6956be96ff6aa97&rlz=1C1GEWG_enIN1011IN1012&ei=GHvoZ_3rFvjH4-EPsbS7qQ4&ved=0ahUKEwj916KCsrCMAxX44zgGHTHaLuUQ4dUDCBA&uact=5&oq=DAP+cheapest+fertilizer&gs_lp=Egxnd3Mtd2l6LXNlcnAiF0RBUCBjaGVhcGVzdCBmZXJ0aWxpemVyMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yCxAAGIAEGIYDGIoFMgsQABiABBiGAxiKBTILEAAYgAQYhgMYigUyCxAAGIAEGIYDGIoFMgsQABiABBiGAxiKBTIIEAAYgAQYogRIjBhQmQNYtBZwA3gBkAEAmAHjAaAByxCqAQYwLjEwLjO4AQPIAQD4AQGYAhCgAuARwgIKEAAYsAMY1gQYR8ICBRAAGO8FwgIHECEYoAEYCsICBRAhGJ8FmAMAiAYBkAYIkgcGMy4xMC4zoAfWWA&sclient=gws-wiz-serp#oshopproduct=pid:7226606901015580892,oid:7226606901015580892,iid:15875511492612756663,pvt:hg,pvo:3&oshop=apv&pvs=0",
+    MOP: "https://www.google.com/search?q=mop+cheapest+fertilizer&sca_esv=c6956be96ff6aa97&rlz=1C1GEWG_enIN1011IN1012&ei=HXvoZ77JLo_E4-EPurbr0QM&ved=0ahUKEwj-y-uEsrCMAxUP4jgGHTrbOjoQ4dUDCBA&uact=5&oq=mop+cheapest+fertilizer&gs_lp=Egxnd3Mtd2l6LXNlcnAiF21vcCBjaGVhcGVzdCBmZXJ0aWxpemVyMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIEMgUQABjvBTIFEAAY7wVI9Q5QxwhY9QtwAXgBkAEAmAGBAaAB9AKqAQMwLjO4AQPIAQD4AQGYAgSgAowDwgIKEAAYsAMY1gQYR8ICCBAAGAcYCBgewgILEAAYgAQYhgMYigXCAggQABiiBBiJBcICCBAhGKABGMMEmAMAiAYBkAYIkgcDMS4zoAeCDg&sclient=gws-wiz-serp#oshopproduct=pid:11128095334466023423,oid:11128095334466023423,iid:16796071657120842358,pvt:hg,pvo:3&oshop=apv&pvs=0",
+    NPK_10_26_26: "https://www.google.com/search?q=NPK_10_26_26+cheapest+fertlizer&sca_esv=36d1bc09254dbabd&rlz=1C1GEWG_enIN1011IN1012&ei=fXvoZ6_yKt7AjuMPt6DW0A8&ved=0ahUKEwjvpMuysrCMAxVeoGMGHTeQFfoQ4dUDCBA&uact=5&oq=NPK_10_26_26+cheapest+fertlizer&gs_lp=Egxnd3Mtd2l6LXNlcnAiH05QS18xMF8yNl8yNiBjaGVhcGVzdCBmZXJ0bGl6ZXIyBxAhGKABGAoyBxAhGKABGAoyBxAhGKABGApI5iBQ3gdYvh9wAXgBkAEAmAGnAaABxg2qAQQwLjE0uAEDyAEA-AEBmAIOoALYDMICChAAGLADGNYEGEfCAgQQIRgVmAMA4gMFEgExIECIBgGQBgiSBwQxLjEzoAeyPQ&sclient=gws-wiz-serp#oshopproduct=gid:14197905387816503410,mid:576462806808834699,oid:4735473288311110893,iid:3840804513524725871,pvt:hg,pvo:3&oshop=apv&pvs=0",
+    Organic: "https://plantlane.com/collections/organic-fertilizers?page=2&srsltid=AfmBOorG5UnspzRP_u-72SHyCNACFrqtlcrhF5iuMJbFzu8eTWQdbpjl"
   };
 
   const calculateFertilizerRequirements = (crop, soilState) => {
@@ -56,16 +66,35 @@ export default function Fert() {
     const recommendations = [];
     if (deficits.N > 0) {
       const ureaNeeded = (deficits.N / fertilizers.Urea.N) * 1000;
-      recommendations.push(`Urea: ${ureaNeeded.toFixed(1)} kg/ha`);
+      recommendations.push({
+        name: "Urea",
+        amount: ureaNeeded.toFixed(1),
+        link: fertilizerLinks.Urea
+      });
     }
     if (deficits.P > 0) {
       const dapNeeded = (deficits.P / fertilizers.DAP.P) * 1000;
-      recommendations.push(`DAP: ${dapNeeded.toFixed(1)} kg/ha`);
+      recommendations.push({
+        name: "DAP",
+        amount: dapNeeded.toFixed(1),
+        link: fertilizerLinks.DAP
+      });
     }
     if (deficits.K > 0) {
       const mopNeeded = (deficits.K / fertilizers.MOP.K) * 1000;
-      recommendations.push(`MOP: ${mopNeeded.toFixed(1)} kg/ha`);
+      recommendations.push({
+        name: "MOP",
+        amount: mopNeeded.toFixed(1),
+        link: fertilizerLinks.MOP
+      });
     }
+
+    // Always recommend some organic matter
+    recommendations.push({
+      name: "Organic Matter",
+      amount: "500-1000",
+      link: fertilizerLinks.Organic
+    });
 
     return recommendations;
   };
@@ -208,7 +237,23 @@ export default function Fert() {
                 backgroundColor: "#e8f5e9",
                 borderRadius: "5px"
               }}>
-                {rec}
+                <div>
+                  <strong>{rec.name}:</strong> {rec.amount} kg/ha
+                </div>
+                <a 
+                  href={rec.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-block",
+                    marginTop: "4px",
+                    fontSize: "14px",
+                    color: "#1e88e5",
+                    textDecoration: "none"
+                  }}
+                >
+                  Buy {rec.name} at best price
+                </a>
               </li>
             ))}
           </ul>

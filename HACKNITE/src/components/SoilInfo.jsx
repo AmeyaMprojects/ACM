@@ -46,7 +46,7 @@ function SoilInfo({ onSubmit }) {
 
   return (
     <div style={{ overflowX: "hidden" }}> {/* Removed scrollable-container class */}
-      <h2 style={{ textAlign: "center", marginBottom: "24px", color: "black" }}>
+      <h2  style={{ textAlign: "center", marginBottom: "24px", color: "black" ,fontSize: "24px"}}>
         SOIL INFORMATION
       </h2>
       <div

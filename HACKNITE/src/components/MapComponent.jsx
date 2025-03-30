@@ -14,7 +14,7 @@ const defaultCenter = {
   lng: 78.9629,
 };
 
-const MapComponent = () => {
+const MapComponent = ({ onCoordinatesSelect }) => {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [serverCoordinates, setServerCoordinates] = useState(null);
   const [autocomplete, setAutocomplete] = useState(null);
@@ -93,6 +93,7 @@ const MapComponent = () => {
     } catch (error) {
       console.error("Error fetching coordinates:", error);
     }
+    onCoordinatesSelect(selectedCoordinates);
   };
 
   useEffect(() => {

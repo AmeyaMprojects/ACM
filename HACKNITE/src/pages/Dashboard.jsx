@@ -11,14 +11,19 @@ import Fert from "../components/Fert"; // Import the Fert component
 
 let globalCoordinates = null; // Global variable to store coordinates
 
+
+
 function Dashboard() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
   const [username, setUsername] = useState(""); // State to track username input
   const [password, setPassword] = useState(""); // State to track password input
   const [error, setError] = useState(""); // State to track login errors
-  const [currentStep, setCurrentStep] = useState("welcome"); // State to track the current step
   const [activeComponent, setActiveComponent] = useState("WelcomeSection"); // State to track active sidebar component
   const [showSidebar, setShowSidebar] = useState(false); // State to toggle sidebar visibility
+  const [currentStep, setCurrentStep] = useState("login"); // Track the current step
+  const [coordinates, setCoordinates] = useState(null); // Store selected coordinates
+
+  
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -27,6 +32,7 @@ function Dashboard() {
     if (username === "admin" && password === "password") {
       setIsLoggedIn(true);
       setError(""); // Clear any previous errors
+      setCurrentStep("map"); // Move to the map step after login
     } else {
       setError("Invalid username or password");
     }
@@ -37,9 +43,9 @@ function Dashboard() {
       globalCoordinates = coordinates; // Store the coordinates in the global variable
       console.log("Global Coordinates:", globalCoordinates);
     }
-    if (currentStep === "welcome") {
-      setCurrentStep("map");
-    } else if (currentStep === "map") {
+    if (currentStep === "map") {
+      setCurrentStep("welcome"); // Move to the welcome step after the map
+    } else if (currentStep === "welcome") {
       setCurrentStep("soil");
     } else if (currentStep === "soil") {
       setCurrentStep("crops");
@@ -82,7 +88,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      {!isLoggedIn ? (
+      {currentStep === "login" ? (
         <div className="centered-content">
           <div className="login-page">
             <h1>Login</h1>
@@ -112,11 +118,10 @@ function Dashboard() {
             </form>
           </div>
         </div>
-      ) : currentStep === "welcome" ? (
+      ) : currentStep === "map" ? (
         <div className="centered-content">
-          <WelcomeSection />
+          <MapComponent onCoordinatesSelect={handleNext} />
           <button
-            className="next-button"
             onClick={() => handleNext()}
             style={{
               marginTop: "20px",
@@ -131,10 +136,11 @@ function Dashboard() {
             Next
           </button>
         </div>
-      ) : currentStep === "map" ? (
+      ) : currentStep === "welcome" ? (
         <div className="centered-content">
-          <MapComponent onCoordinatesSelect={handleNext} />
+          <WelcomeSection />
           <button
+            className="next-button"
             onClick={() => handleNext()}
             style={{
               marginTop: "20px",
@@ -170,9 +176,6 @@ function Dashboard() {
               <li onClick={() => setActiveComponent("IntercroppingSuggestions")}>
                 InfoMetrics
               </li>
-              {/* <li onClick={() => setActiveComponent("SustainabilityScore")}>
-                Sustainability Score
-              </li> */}
               <li onClick={() => setActiveComponent("Fert")}>Fertilizer Recommendations</li>
             </ul>
           </div>

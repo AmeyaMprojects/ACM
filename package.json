@@ -5,7 +5,6 @@
     "chart.js": "^4.4.8",
     "echarts": "^5.6.0",
     "echarts-for-react": "^3.0.2",
-    "framer-motion": "^12.6.2",
     "react-chartjs-2": "^5.3.0"
   }
 }

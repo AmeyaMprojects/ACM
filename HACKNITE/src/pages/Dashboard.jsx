@@ -167,20 +167,23 @@ function Dashboard() {
         <div className="report-dashboard">
           <div className="sidebar">
             <ul>
-              <li onClick={() => setActiveComponent("MicroclimatePrediction")}>
-                Microclimate Prediction
+              <li className="sidebar-item" onClick={() => setActiveComponent("MicroclimatePrediction")}>
+                Microclimate Prediction <span className="arrow">➜</span>
               </li>
-              <li onClick={() => setActiveComponent("DiagnosisTool")}>
-                Diagnosis Tool
+              <li className="sidebar-item" onClick={() => setActiveComponent("DiagnosisTool")}>
+                Diagnosis Tool <span className="arrow">➜</span>
               </li>
-              <li onClick={() => setActiveComponent("IntercroppingSuggestions")}>
-                InfoMetrics
+              <li className="sidebar-item" onClick={() => setActiveComponent("IntercroppingSuggestions")}>
+                InfoMetrics <span className="arrow">➜</span>
               </li>
-              <li onClick={() => setActiveComponent("Fert")}>Fertilizer Recommendations</li>
+              <li className="sidebar-item" onClick={() => setActiveComponent("Fert")}>
+                Fertilizer Recommendations <span className="arrow">➜</span>
+              </li>
             </ul>
           </div>
           <div className="main-content">{renderComponent()}</div>
         </div>
+
       )}
     </div>
   );

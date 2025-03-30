@@ -92,7 +92,7 @@ export default function Fert() {
     // Always recommend some organic matter
     recommendations.push({
       name: "Organic Matter",
-      amount: "500-1000",
+      amount: "500-1000", 
       link: fertilizerLinks.Organic
     });
 
@@ -231,31 +231,23 @@ export default function Fert() {
             margin: "15px 0"
           }}>
             {recommendation.fertilizer_recommendations.map((rec, index) => (
-              <li key={index} style={{ 
-                marginBottom: "8px",
-                padding: "8px",
-                backgroundColor: "#e8f5e9",
-                borderRadius: "5px"
-              }}>
-                <div>
-                  <strong>{rec.name}:</strong> {rec.amount} kg/ha
-                </div>
-                <a 
-                  href={rec.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-block",
-                    marginTop: "4px",
-                    fontSize: "14px",
-                    color: "#1e88e5",
-                    textDecoration: "none"
-                  }}
-                >
-                  Buy {rec.name} at best price
-                </a>
-              </li>
-            ))}
+  <li
+    key={index}
+    style={{
+      marginBottom: "8px",
+      padding: "8px",
+      backgroundColor: "#e8f5e9",
+      borderRadius: "5px",
+    }}
+  >
+    <div>
+      <strong>{rec.name}:</strong> {rec.amount} kg/ha
+    </div>
+    <p style={{ marginTop: "4px", fontSize: "14px", color: "#555" }}>
+      Please purchase {rec.amount} kg/ha of {rec.name} to meet the nutrient requirements.
+    </p>
+  </li>
+))}
           </ul>
         </div>
       )}

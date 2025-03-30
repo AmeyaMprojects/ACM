@@ -1,18 +1,12 @@
 import React from "react";
-import { motion } from "framer-motion";
 import MapComponent from "../components/MapComponent"; // Import the Map component
 
 export default function Home() {
   return (
     <div className="home-page">
       {/* Hero Section */}
-      <section className="hero-section">
-        <motion.h1
-          animate={{ y: [0, -10, 0] }} // Moves up and down
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        >
-          EMPOWERING FARMERS <br /> WITH AI
-        </motion.h1>
+      <section className="hero-section" style={{ fontSize: "3rem", fontWeight: "bold" }}>
+      EMPOWERING FARMERS <br /> WITH AI
       </section>
 
       <div className="container">

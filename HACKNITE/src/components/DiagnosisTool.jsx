@@ -7,25 +7,25 @@ const DiagnosisTool = () => {
 
   const treatments = {
     "Apple_scab": 
-      "1. Apply fungicide with myclobutanil at first sign of lesions\n" +
-      "2. Remove and burn infected leaves/fruit\n" + 
-      "3. Prune canopy to improve air circulation\n" + 
-      "4. Avoid overhead watering - use drip irrigation\n" + 
-      "5. Apply sulfur-based treatments in early spring",
+      " Apply fungicide with myclobutanil at first sign of lesions\n" +
+      " Remove and burn infected leaves/fruit\n" + 
+      " Prune canopy to improve air circulation\n" + 
+      " Avoid overhead watering - use drip irrigation\n" + 
+      " Apply sulfur-based treatments in early spring",
 
     "Apple___Black_rot":
-      "1. Prune infected branches 6-12 inches below cankers\n" +
-      "2. Apply copper fungicide every 7-10 days during bloom\n" +
-      "3. Remove mummified fruit from trees and ground\n" +
-      "4. Sterilize pruning tools with 70% alcohol\n" +
-      "5. Plant resistant varieties like 'Liberty' or 'Freedom'",
+      " Prune infected branches 6-12 inches below cankers\n" +
+      " Apply copper fungicide every 7-10 days during bloom\n" +
+      " Remove mummified fruit from trees and ground\n" +
+      " Sterilize pruning tools with 70% alcohol\n" +
+      " Plant resistant varieties like 'Liberty' or 'Freedom'",
 
     "Apple___Cedar_apple_rust":
-      "1. Remove nearby cedar/juniper trees (primary host)\n" +
-      "2. Apply myclobutanil fungicide at bud break\n" +
-      "3. Rake and destroy fallen leaves\n" +
-      "4. Use protective fungicide sprays during wet periods\n" + 
-      "5. Inspect trees weekly for orange gelatinous growths",
+      " Remove nearby cedar/juniper trees (primary host)\n" +
+      " Apply myclobutanil fungicide at bud break\n" +
+      " Rake and destroy fallen leaves\n" +
+      " Use protective fungicide sprays during wet periods\n" + 
+      " Inspect trees weekly for orange gelatinous growths",
 
     // ... Add similar detailed treatments for all 13 classes
     // (Condensed for brevity - maintain same pattern for others)
@@ -144,9 +144,13 @@ const DiagnosisTool = () => {
           .treatment ol {
             list-style: decimal inside;
             padding-left: 1rem;
+            display:flex;
+            flex-direction:column;
+
           }
 
           .treatment li {
+          display:inline-block;
             margin: 1rem 0;
             line-height: 1.6;
             color: #34495e;

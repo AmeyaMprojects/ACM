@@ -31,7 +31,14 @@ export default function Home() {
         <section className="empowering">
           <h2>Empowering Farmers</h2>
           <div className="empowering-content">
-            <img src="plumeria-hawaii.jpg" alt="Flower in field" className="empowering-img" />
+            <video
+              src="/Time Lapse  Tree Growing.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="empowering-video"
+            ></video>
             <div className="empowering-text">
               <h3>Harnessing AI for Sustainable Farming</h3>
               <p>AI-driven insights help farmers make informed decisions based on real-time data.</p>
@@ -39,6 +46,8 @@ export default function Home() {
               <p>Analyze probabilities and uncertainties to enhance yield outcomes.</p>
             </div>
           </div>
+
+
         </section>
 
         <section className="cultivating">

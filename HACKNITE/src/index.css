@@ -192,7 +192,7 @@ body {
 
 .sidebar {
   width: 250px;
-  background: linear-gradient(135deg, #37923b, #66bb6a); /* Green gradient */
+  background: linear-gradient(135deg, #70ff77, #027b08); /* Green gradient */
   color: white;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -214,8 +214,9 @@ body {
 }
 
 .sidebar li:hover {
-  background: #1b5e20; /* Darker green on hover */
+  background: #4c5e1b; /* Darker green on hover */
   transform: scale(1.05); /* Slightly enlarge on hover */
+  color: black;
 }
 
 .sidebar li:active {
@@ -667,7 +668,7 @@ body {
 
 .map-search-bar {
   width: 100%;
-  max-width: 400px;
+  width: 700px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -989,5 +990,3 @@ button:hover {
 .submit-button:active {
   transform: translateY(1px);
 }
-
-

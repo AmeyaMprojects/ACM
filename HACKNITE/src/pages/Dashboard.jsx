@@ -168,11 +168,11 @@ function Dashboard() {
                 Diagnosis Tool
               </li>
               <li onClick={() => setActiveComponent("IntercroppingSuggestions")}>
-                Intercropping Suggestions
+                InfoMetrics
               </li>
-              <li onClick={() => setActiveComponent("SustainabilityScore")}>
+              {/* <li onClick={() => setActiveComponent("SustainabilityScore")}>
                 Sustainability Score
-              </li>
+              </li> */}
               <li onClick={() => setActiveComponent("Fert")}>Fertilizer Recommendations</li>
             </ul>
           </div>

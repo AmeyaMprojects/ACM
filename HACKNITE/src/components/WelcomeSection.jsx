@@ -34,31 +34,24 @@ const WelcomeSection = () => {
       });
   }, []);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/coordinates")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Coordinates from server:", data);
-        setCoordinates(data); // Save coordinates
-      })
-      .catch((error) => {
-        console.error("Error fetching coordinates:", error);
-      });
-  }, []);
-
   // Fetch weather data based on coordinates
   useEffect(() => {
     if (coordinates) {
-      const { latitude, longitude } = coordinates;
+      const { lat, lng } = coordinates;
 
-      console.log("Fetching weather data for coordinates:", latitude, longitude);
+      console.log("Fetched Coordinates:", lat, lng); // Log coordinates to verify
 
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=a002f5b7e08fef73ab9f5efca4598b54`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=a002f5b7e08fef73ab9f5efca4598b54`
       )
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Failed to fetch weather data: ${response.statusText}`);
+          }
+          return response.json();
+        })
         .then((data) => {
-          console.log("Weather API response:", data);
+          console.log("Weather API response:", data); // Log API response
 
           if (data.weather && data.weather.length > 0 && data.main) {
             const weatherMain = data.weather[0].main.toLowerCase();

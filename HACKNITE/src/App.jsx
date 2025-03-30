@@ -10,6 +10,11 @@ import About from "./pages/About"; // Import the About Us page
 export default function App() {
   const [isChatOpen, setIsChatOpen] = useState(false); // Toggle chatbot visibility
 
+  // State for dynamic chatbot URL
+  const [chatbotUrl, setChatbotUrl] = useState(
+    "https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/03/29/19/20250329194021-6JJPRBJN.json"
+  );
+
   return (
     <Router>
       <div className="app-container">
@@ -67,7 +72,7 @@ export default function App() {
             }}
           >
             <iframe
-              src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2025/03/29/19/20250329194021-6JJPRBJN.json"
+              src={chatbotUrl} // Using the dynamic URL
               width="100%"
               height="100%"
               style={{ border: "none", borderRadius: "10px" }}

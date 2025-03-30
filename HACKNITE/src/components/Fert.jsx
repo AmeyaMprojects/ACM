@@ -160,16 +160,17 @@ export default function Fert() {
   };
 
   return (
-    <div style={{ 
+    <div className="Fert-container" style={{ 
       maxWidth: "600px",
       margin: "0 auto",
+      height: "70vh",
       padding: "20px",
-      backgroundColor: "white",
+      backgroundColor: "#E8F3DB",
       borderRadius: "15px",
       boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
     }}>
       <h2 style={{ 
-        color: "#2e7d32",
+        color: "#2C3E50",
         marginBottom: "20px",
         textAlign: "center"
       }}>

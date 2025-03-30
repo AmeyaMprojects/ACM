@@ -276,7 +276,7 @@ body {
   max-width: 700px;
   margin: 50px auto; /* Center the component */
   padding: 20px;
-  background: linear-gradient(135deg, #42ffb7, #8cfb2b); /* Light blue gradient */
+  background: #E8F3DB; /* Light blue gradient */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   text-align: center;
@@ -284,6 +284,7 @@ body {
   opacity: 0; /* Start with 0 opacity for fade-in animation */
   animation: fadeIn 1s ease-out forwards; /* Fade-in animation */
 }
+
 
 /* Animation to fade in the entire component */
 @keyframes fadeIn {
@@ -298,7 +299,7 @@ body {
 /* Styling for the heading */
 .microclimate-prediction h2 {
   font-size: 2rem;
-  color: #fcfdff; /* Dark blue */
+  color: #2C3E50; /* Dark blue */
   margin-bottom: 20px;
   animation: slideIn 0.8s ease-out; /* Slide-in effect for heading */
 }
@@ -394,7 +395,7 @@ body {
   max-width: 600px;
   margin: 50px auto; /* Center the component */
   padding: 20px;
-  background: linear-gradient(135deg, #e8f5e9, #c8e6c9); /* Light green gradient */
+  background: #E8F3DB; /* Light green gradient */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   text-align: center;

@@ -92,7 +92,7 @@ export default function Fert() {
     // Always recommend some organic matter
     recommendations.push({
       name: "Organic Matter",
-      amount: "500-1000",
+      amount: "500-1000", 
       link: fertilizerLinks.Organic
     });
 
@@ -160,16 +160,17 @@ export default function Fert() {
   };
 
   return (
-    <div style={{ 
+    <div className="Fert-container" style={{ 
       maxWidth: "600px",
       margin: "0 auto",
+      height: "70vh",
       padding: "20px",
-      backgroundColor: "white",
+      backgroundColor: "#E8F3DB",
       borderRadius: "15px",
       boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
     }}>
       <h2 style={{ 
-        color: "#2e7d32",
+        color: "#2C3E50",
         marginBottom: "20px",
         textAlign: "center"
       }}>
@@ -231,31 +232,23 @@ export default function Fert() {
             margin: "15px 0"
           }}>
             {recommendation.fertilizer_recommendations.map((rec, index) => (
-              <li key={index} style={{ 
-                marginBottom: "8px",
-                padding: "8px",
-                backgroundColor: "#e8f5e9",
-                borderRadius: "5px"
-              }}>
-                <div>
-                  <strong>{rec.name}:</strong> {rec.amount} kg/ha
-                </div>
-                <a 
-                  href={rec.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-block",
-                    marginTop: "4px",
-                    fontSize: "14px",
-                    color: "#1e88e5",
-                    textDecoration: "none"
-                  }}
-                >
-                  Buy {rec.name} at best price
-                </a>
-              </li>
-            ))}
+  <li
+    key={index}
+    style={{
+      marginBottom: "8px",
+      padding: "8px",
+      backgroundColor: "#e8f5e9",
+      borderRadius: "5px",
+    }}
+  >
+    <div>
+      <strong>{rec.name}:</strong> {rec.amount} kg/ha
+    </div>
+    <p style={{ marginTop: "4px", fontSize: "14px", color: "#555" }}>
+      Please purchase {rec.amount} kg/ha of {rec.name} to meet the nutrient requirements.
+    </p>
+  </li>
+))}
           </ul>
         </div>
       )}

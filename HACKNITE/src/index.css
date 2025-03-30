@@ -190,9 +190,11 @@ body {
   background-attachment: fixed;
 }
 
+
+
 .sidebar {
   width: 250px;
-  background: linear-gradient(135deg, #70ff77, #027b08); /* Green gradient */
+  background: linear-gradient(135deg, #22c209, #027b08); /* Green gradient */
   color: white;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -211,6 +213,8 @@ body {
   font-size: 1.2rem;
   transition: background 0.3s ease, transform 0.2s ease;
   margin: 30px 0;
+  height: 74.69;
+  
 }
 
 .sidebar li:hover {
@@ -272,7 +276,7 @@ body {
   max-width: 700px;
   margin: 50px auto; /* Center the component */
   padding: 20px;
-  background: linear-gradient(135deg, #e3f2fd, #bbdefb); /* Light blue gradient */
+  background: #E8F3DB; /* Light blue gradient */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   text-align: center;
@@ -280,6 +284,7 @@ body {
   opacity: 0; /* Start with 0 opacity for fade-in animation */
   animation: fadeIn 1s ease-out forwards; /* Fade-in animation */
 }
+
 
 /* Animation to fade in the entire component */
 @keyframes fadeIn {
@@ -294,7 +299,7 @@ body {
 /* Styling for the heading */
 .microclimate-prediction h2 {
   font-size: 2rem;
-  color: #1565c0; /* Dark blue */
+  color: #2C3E50; /* Dark blue */
   margin-bottom: 20px;
   animation: slideIn 0.8s ease-out; /* Slide-in effect for heading */
 }
@@ -390,7 +395,7 @@ body {
   max-width: 600px;
   margin: 50px auto; /* Center the component */
   padding: 20px;
-  background: linear-gradient(135deg, #e8f5e9, #c8e6c9); /* Light green gradient */
+  background: #E8F3DB; /* Light green gradient */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   text-align: center;
@@ -868,6 +873,36 @@ button:hover {
   background-color: #1b5e20;
 }
 
+
+.sidebar ul {
+  list-style: none; /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item {
+  display: flex; /* Use flexbox to align icon and text horizontally */
+  align-items: center; /* Vertically center the icon and text */
+  padding: 15px; /* Add padding for better spacing */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+  font-size: 1.2rem; /* Increase font size for better readability */
+}
+
+
+
+.sidebar-item svg {
+  font-size: 2rem; /* Increase icon size */
+  color: #ffffff; /* Set icon color to green */
+  margin-right: 15px; /* Add spacing between icon and text */
+}
+
+.sidebar-item span {
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+}
+
 .sidebar ul {
   list-style: none;
   padding: 0;
@@ -878,10 +913,13 @@ button:hover {
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.3s ease;
+  color: white;
 }
 
 .sidebar li:hover {
-  background: #e0e0e0;
+  background: #21d900;
+  color:white;
+  
 }
 
 .main-content {
@@ -932,7 +970,7 @@ button:hover {
 }
 
 .crop-image {
-  width: 100%;
+  width: 190px;
   height: 150px;
   object-fit: cover;
   border-radius: 10px;
@@ -990,3 +1028,13 @@ button:hover {
 .submit-button:active {
   transform: translateY(1px);
 }
+
+.title-container h2 {
+  color: #000; /* Text color (black or any other color) */
+  text-shadow: 
+    2px 2px 4px rgba(255, 255, 255, 0.5); /* Drop shadow with blur */
+  font-size: 2rem; /* Adjust font size as needed */
+  font-weight: bold; /* Make the text bold */
+  text-align: center; /* Center the text */
+}
+

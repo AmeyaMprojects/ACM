@@ -8,6 +8,11 @@ import DiagnosisTool from "../components/DiagnosisTool";
 import IntercroppingSuggestions from "../components/IntercroppingSuggestions";
 import SustainabilityScore from "../components/SustainabilityScore";
 import Fert from "../components/Fert"; // Import the Fert component
+import { WiDayCloudy } from "react-icons/wi";
+import { FaStethoscope } from "react-icons/fa";
+import { MdAnalytics } from "react-icons/md";
+import { GiPlantRoots } from "react-icons/gi";
+
 
 let globalCoordinates = null; // Global variable to store coordinates
 
@@ -165,22 +170,22 @@ function Dashboard() {
         </div>
       ) : (
         <div className="report-dashboard">
-          <div className="sidebar">
-            <ul>
-              <li className="sidebar-item" onClick={() => setActiveComponent("MicroclimatePrediction")}>
-                Microclimate Prediction <span className="arrow">➜</span>
-              </li>
-              <li className="sidebar-item" onClick={() => setActiveComponent("DiagnosisTool")}>
-                Diagnosis Tool <span className="arrow">➜</span>
-              </li>
-              <li className="sidebar-item" onClick={() => setActiveComponent("IntercroppingSuggestions")}>
-                InfoMetrics <span className="arrow">➜</span>
-              </li>
-              <li className="sidebar-item" onClick={() => setActiveComponent("Fert")}>
-                Fertilizer Recommendations <span className="arrow">➜</span>
-              </li>
-            </ul>
-          </div>
+         <div className="sidebar">
+      <ul>
+        <li className="sidebar-item" onClick={() => setActiveComponent("MicroclimatePrediction")}>
+          <WiDayCloudy style={{ marginRight: "10px" }} /> Microclimate Prediction
+        </li>
+        <li className="sidebar-item" onClick={() => setActiveComponent("DiagnosisTool")}>
+          <FaStethoscope  style={{ marginRight: "10px" }}/> Diagnosis Tool
+        </li>
+        <li className="sidebar-item" onClick={() => setActiveComponent("IntercroppingSuggestions")}>
+          <MdAnalytics style={{ marginRight: "10px" }} /> InfoMetrics
+        </li>
+        <li className="sidebar-item" onClick={() => setActiveComponent("Fert")}>
+          <GiPlantRoots style={{ marginRight: "10px" }} /> Fertilizer Recommendations
+        </li>
+      </ul>
+    </div>
           <div className="main-content">{renderComponent()}</div>
         </div>
 
